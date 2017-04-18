@@ -2,8 +2,8 @@
 <html>
 
 <head>
-  <meta name="description" content="HTML5 Audio Spectrum Visualizer">
-  <title>HTML5 Audio API showcase | Audio visualizer</title>
+  <meta name="description" content="HTML Audio Visualizer">
+  <title>Audio visualizer</title>
   <style type="text/css">
     html,
     body {
@@ -37,7 +37,7 @@
   <div id="wrapper">
     <div id="fileWrapper" class="file_wrapper">
       <div id="info">
-        HTML5 Audio API showcase | An Audio Viusalizer
+        A Audio Viusalizer
       </div>
       <label for="uploadedFile">Drag&drop or select a file to play:</label>
       <input type="file" id="uploadedFile"></input>
@@ -76,7 +76,7 @@
         try {
           this.audioContext = new AudioContext();
         } catch (e) {
-          this._updateInfo('!Your browser does not support AudioContext', false);
+          this._updateInfo('!Your browser does not support Audio Contex for this app¡', false);
           console.log(e);
         }
       },
@@ -149,21 +149,21 @@
           if (audioContext === null) {
             return;
           };
-          that._updateInfo('Decoding the audio', true);
+          that._updateInfo('Decoding the audio file', true);
           audioContext.decodeAudioData(fileResult, function(buffer) {
-            that._updateInfo('Decode succussfully,start the visualizer', true);
+            that._updateInfo('!Decode Succussfull¡', true);
             that._visualize(audioContext, buffer);
           }, function(e) {
-            that._updateInfo('!Fail to decode the file', false);
+            that._updateInfo('!Failed to decode the file¡', false);
             console.log(e);
           });
         };
         fr.onerror = function(e) {
-          that._updateInfo('!Fail to read the file', false);
+          that._updateInfo('!Failed to read the file¡', false);
           console.log(e);
         };
         //assign the file to the reader
-        this._updateInfo('Starting read the file', true);
+        this._updateInfo('!Reading the file¡', true);
         fr.readAsArrayBuffer(file);
       },
       _visualize: function(audioContext, buffer) {
